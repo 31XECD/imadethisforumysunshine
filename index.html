@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>จะเป็นแฟนกันมั้ย 💕</title>
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: linear-gradient(135deg, #ffd6e0, #fff0f5);
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #d6336c;
+    }
+    .btn {
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .yes {
+      background-color: #ff69b4;
+      color: white;
+    }
+    .no {
+      background-color: #bbb;
+      position: absolute;
+    }
+    .container {
+      position: relative;
+      height: 300px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>จะเป็นแฟนกับเรามั้ย? 🥺💕</h1>
+
+  <div class="container">
+    <button class="btn yes" onclick="alert('เย้~ เราเป็นแฟนกันแล้วน้า 💖')">ตกลง</button>
+    <button class="btn no" id="noBtn">ไม่ตกลง</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+
+    // ตรวจสอบว่าเป็นมือถือหรือไม่
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (!isMobile) {
+      document.addEventListener('mousemove', (e) => {
+        const rect = noBtn.getBoundingClientRect();
+        const distance = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+
+        if (distance < 100) {
+          const newX = Math.random() * (window.innerWidth - 100);
+          const newY = Math.rand
