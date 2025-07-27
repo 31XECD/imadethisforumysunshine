@@ -1,9 +1,55 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>จะเป็นแฟนกันมั้ย 💕</title>
   <style>
+    /* --- หน้าโหลดหัวใจ --- */
+    #loading {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      transform: rotate(-45deg);
+      animation: beat 1s infinite;
+      cursor: default;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 100px;
+      height: 90px;
+      background: #ff3366;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart::before {
+      top: 0;
+      left: 50px;
+    }
+    .heart::after {
+      top: -50px;
+      left: 0;
+    }
+    @keyframes beat {
+      0%, 100% {
+        transform: rotate(-45deg) scale(1);
+      }
+      50% {
+        transform: rotate(-45deg) scale(1.2);
+      }
+    }
+
+    /* --- โค้ดเดิม --- */
+    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
     body {
       font-family: 'Kanit', sans-serif;
       text-align: center;
@@ -39,6 +85,12 @@
   </style>
 </head>
 <body>
+  <!-- หน้าโหลดหัวใจ -->
+  <div id="loading">
+    <div class="heart"></div>
+  </div>
+
+  <!-- เนื้อหาหลัก -->
   <h1>จะเป็นแฟนกับเรามั้ย? 🥺💕</h1>
 
   <div class="container">
@@ -47,6 +99,15 @@
   </div>
 
   <script>
+    // ซ่อนหน้าโหลดหลัง 3 วินาที (แก้ไขเวลาได้)
+    setTimeout(() => {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.style.display = 'none';
+      }
+    }, 3000);
+
+    // โค้ดเดิม (ที่ตัดมาให้ไม่ครบ เหมือนขาดตอน จัดให้ใหม่เลย)
     const noBtn = document.getElementById('noBtn');
 
     // ตรวจสอบว่าเป็นมือถือหรือไม่
@@ -55,8 +116,19 @@
     if (!isMobile) {
       document.addEventListener('mousemove', (e) => {
         const rect = noBtn.getBoundingClientRect();
-        const distance = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+        const distance = Math.hypot(
+          e.clientX - (rect.left + rect.width / 2),
+          e.clientY - (rect.top + rect.height / 2)
+        );
 
         if (distance < 100) {
-          const newX = Math.random() * (window.innerWidth - 100);
-          const newY = Math.rand
+          const newX = Math.random() * (window.innerWidth - rect.width);
+          const newY = Math.random() * (window.innerHeight - rect.height);
+          noBtn.style.left = newX + 'px';
+          noBtn.style.top = newY + 'px';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
