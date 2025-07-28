@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter Secret Code 💕</title>
+  <style>
+    /* หน้าโหลดหัวใจ */
+    #loading {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #ffe0fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      animation: pulse 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: #9533d6;
+      border-radius: 50px 50px 0 0;
+    }
+
+    .heart::before {
+      left: 0;
+      transform: rotate(-45deg);
+      transform-origin: bottom right;
+    }
+
+    .heart::after {
+      right: 0;
+      transform: rotate(45deg);
+      transform-origin: bottom left;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: #f3e0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    .container {
+      background: #faf3fa;
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(218, 105, 255, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      color: #9533d6;
+      margin-bottom: 10px;
+    }
+
+    .hint {
+      color: #888;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .code-display {
+      width: 250px;
+      height: 40px;
+      font-size: 28px;
+      text-align: center;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      margin-bottom: 20px;
+      letter-spacing: 8px;
+      padding: 5px;
+      color: #9533d6;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-gap: 15px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .keypad button {
+      width: 60px;
+      height: 60px;
+      font-size: 20px;
+      border: none;
+      border-radius: 50%;
+      background: #fff;
+      color: #9533d6;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .keypad button:hover {
+      background: #f5d6ff;
+    }
+
+    #unlockBtn {
+      background: #9533d6;
+      color: white;
+      border: none;
+      padding: 12px 40px;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #unlockBtn:hover {
+      background: #9533d6;
+    }
+
+    .unlocked {
+      display: none;
+      font-size: 24px;
+      color: #9533d6;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- หน้าโหลด -->
+  <div id="loading">
+    <div class="heart"></div>
+  </div>
+
+  <!-- หน้าใส่รหัส -->
+  <div class="container">
+    <img src="https://img5.pic.in.th/file/secure-sv1/head-pinda687eb3a78ef5ed.png" alt="head pin" width="300">
+    <div class="hint">Hint: When we start our story ? (DDMMYY)</div>
+    <input type="password" id="codeInput" class="code-display" readonly>
+    
+    <div class="keypad">
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button onclick="clearCode()">✕</button>
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="deleteLast()">⌫</button>
+    </div>
+
+    <button id="unlockBtn" onclick="checkCode()">Unlock</button>
+    <div class="unlocked" id="unlockedMessage">💗 Welcome, love unlocked! 💗</div>
+  </div>
+
+  <script>
+    // แสดงหัวใจโหลดแป๊บนึง
+    window.addEventListener("load", function() {
+      document.getElementById("loading").style.display = "none";
+    });
+
+    let code = '';
+    const correctCode = "050625"; // <-- เปลี่ยนรหัสลับได้ตรงนี้ (ววดดปป)
+
+    function appendNumber(num) {
+      if (code.length < 6) {
+        code += num;
+        document.getElementById("codeInput").value = "*".repeat(code.length);
+      }
+    }
+
+    function deleteLast() {
+      code = code.slice(0, -1);
+      document.getElementById("codeInput").value = "*".repeat(code.length);
+    }
+
+    function clearCode() {
+      code = '';
+      document.getElementById("codeInput").value = '';
+    }
+
+    function checkCode() {
+      if (code === correctCode) {
+        window.location.href = "love.html"; // ไปยังหน้าต่อไป
+      } else {
+        alert("ผิดอ่าอ้วนน! ลองใหม่นะคะ 💔");
+        clearCode();
+      }
+    }
+  </script>
+</body>
+</html>
