@@ -4,10 +4,36 @@
   <meta charset="UTF-8">
   <title>แน่ใจเหรอออ 😢</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans+Thai:wght@300;400&family=Quicksand:wght@500&display=swap');
+    /* --- หน้าโหลดด้วยรูปหัวใจใหม่ --- */
+    #loading {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+       background: linear-gradient(to bottom, #c5a8fe, #e8b6f6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #loading img {
+      width: 300px;
+      height: auto;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
     body {
-      font-family: 'Kanit', sans-serif;
-      background: linear-gradient(135deg, #f3e0f5, #faf3fa);
+      font-family: 'Quicksand', 'Noto Sans Thai', sans-serif;
+      background: linear-gradient(to bottom, #c5a8fe, #e8b6f6);
       text-align: center;
       padding: 100px 20px;
       margin: 0;
@@ -24,7 +50,15 @@
       margin-bottom: 40px;
     }
 
+    .container {
+      background: #faf3fa;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(218, 105, 255, 0.3);
+    }
+    
     button {
+      font-family: 'Quicksand', 'Noto Sans Thai', sans-serif;
       margin: 10px;
       padding: 15px 30px;
       font-size: 18px;
@@ -36,23 +70,43 @@
     }
 
     button:first-of-type {
+      font-family: 'Quicksand', 'Noto Sans Thai', sans-serif;
       background-color: #9533d6;
       color: white;
     }
 
     button:last-of-type {
+      font-family: 'Quicksand', 'Noto Sans Thai', sans-serif;
       background-color: #cccccc;
       color: #555;
     }
 
     button:hover {
+      font-family: 'Quicksand', 'Noto Sans Thai', sans-serif;
       transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <h1>ล่มอีกแล้วอะ 🥺<br>ตอบใหม่นะคะคนดี 💖</h1>
-  <button onclick="window.location.href='yes.html'">เป็นแฟนกัน 💑</button>
-  <button onclick="window.location.href='try-again1.html'">ไม่เป็น 😢</button>
+<!-- หน้าโหลดด้วยรูปหัวใจใหม่ --> 
+  <div id="loading">
+    <img src="https://img2.pic.in.th/pic/heart-icon2f0a59d9d2fb6288.png" alt="heart icon" />
+  </div>
+
+   <!-- เนื้อหาหลัก -->
+  <div class="container">
+    <h1>ยังจะไม่เป็นอยู่อีกหรอคะ 🥺</h1>
+    <button class="btn yes" onclick="window.location.href='yes.html'">เป็นแฟนกัน 💜</button>
+    <button class="btn no" onclick="window.location.href='try-again2.html'">ไม่เป็น 😢</button>
+  </div>
+
+  <script>
+    // ซ่อนหน้าโหลดหลัง 3 วิ
+    setTimeout(() => {
+      const loading = document.getElementById('loading');
+      if (loading) loading.style.display = 'none';
+    }, 0);
+  </script>
+
 </body>
 </html>
