@@ -4,46 +4,23 @@
   <meta charset="UTF-8" />
   <title>thisisformuay♥</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Noto+Sans+Thai:wght@300;400&family=Quicksand:wght@500&display=swap');
 
-    /* --- หน้าโหลดหัวใจ --- */
+    /* --- หน้าโหลดด้วยรูปหัวใจใหม่ --- */
     #loading {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: #f9ecf7;
+      background: linear-gradient(to bottom, #c5a8fe, #e8b6f6);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
     }
 
-    .heart {
-      width: 100px;
-      height: 90px;
-      position: relative;
+    #loading img {
+      width: 300px;
+      height: auto;
       animation: pulse 1s infinite;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 90px;
-      background: #9533d6;
-      border-radius: 50px 50px 0 0;
-    }
-
-    .heart::before {
-      left: 0;
-      transform: rotate(-45deg);
-      transform-origin: bottom right;
-    }
-
-    .heart::after {
-      right: 0;
-      transform: rotate(45deg);
-      transform-origin: bottom left;
     }
 
     @keyframes pulse {
@@ -56,35 +33,33 @@
     }
 
     body {
-      font-family: 'Kanit', sans-serif;
+      font-family: 'Quicksand', 'Noto Sans Thai', sans-serif;
       margin: 0;
       height: 100vh;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url('https://img2.pic.in.th/pic/heart723f91127babf392.png');
-      background-size: contain;
+      background: linear-gradient(to bottom, #c5a8fe, #e8b6f6);
+      background-image: url('https://img5.pic.in.th/file/secure-sv1/-7a78791b6b8420659.png');
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      background-color: #f9ecf7;
-      flex-direction: column;
+       flex-direction: column;
     }
 
-h1 {
-  font-size: 2.5rem;
-  color: #9533d6;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-bottom: 10px;
-}
+    h1 {
+      font-size: 2.5rem;
+      color: #9533d6;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
 
-p {
-  margin-top: 5px;
-  font-size: 1.2rem;
-  color: #444;
-}
-
-
+    p {
+      margin-top: 5px;
+      font-size: 1.2rem;
+      color: #444;
+    }
 
     .btn {
       font-family: 'Kanit', sans-serif;
@@ -105,15 +80,15 @@ p {
   </style>
 </head>
 <body>
-  <!-- หน้าโหลดหัวใจ -->
+  <!-- หน้าโหลดด้วยรูปหัวใจใหม่ --> 
   <div id="loading">
-    <div class="heart"></div>
+    <img src="https://img2.pic.in.th/pic/heart-icon2f0a59d9d2fb6288.png" alt="heart icon" />
   </div>
 
   <!-- เนื้อหาหลัก -->
   <h1>Welcome My Sunshine 🌞🌷</h1>
   <p>I have something special for u ^^ , Let's see it!</p>
-  <button class="btn">Let's go</button>
+  <button class="btn"><a href="our_stories.html">Let's go</a></button>
 
   <script>
     // ซ่อนหน้าโหลดหลัง 3 วิ
