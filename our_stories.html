@@ -193,11 +193,18 @@
 
 <button class="btn yes" onclick="window.location.href='lock.html'">และอย่างสุดท้ายที่พี่อยากบอกเธอ</button>
   
-<audio autoplay loop hidden>
+<audio id="bgmusic" loop preload="auto">
   <source src="https://31XECD.github.io/imadethisforumysunshine/Gift-Musketeers.mp3" type="audio/mpeg">
 </audio>
-
+  
   <script>
+
+    document.addEventListener('click', function playMusicOnce() {
+    const music = document.getElementById("bgmusic");
+    music.play().catch(e => console.log("Autoplay blocked:", e));
+    document.removeEventListener('click', playMusicOnce); // ไม่ให้เล่นซ้ำ
+    });
+    
     function updateTimer() {
       const start = new Date("2025-06-05T00:00:00");
       const now = new Date();
@@ -217,4 +224,5 @@
   </script>
 </body>
 </html>
+
 
